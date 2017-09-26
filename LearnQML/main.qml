@@ -3,35 +3,35 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 
 ApplicationWindow {
+    id: thisWindow
     visible: true
-    width: 640
-    height: 480
-    title: qsTr("Hello World")
+    width: 640/2
+    height: 1136/2
+    title: qsTr("Basic English Grammar")
 
-    SwipeView {
-        id: swipeView
-        anchors.fill: parent
-        currentIndex: tabBar.currentIndex
-
-        Page1 {
-        }
-
-        Page {
-            Label {
-                text: qsTr("Second page")
-                anchors.centerIn: parent
-            }
-        }
+    Text {
+        id: txtTitle
+        backgrou
+        x: thisWindow/2 - width/2
+        text: qsTr("Basic English Grammar")
+        font.family: "Consolas"
     }
 
-    footer: TabBar {
-        id: tabBar
-        currentIndex: swipeView.currentIndex
-        TabButton {
-            text: qsTr("First")
-        }
-        TabButton {
-            text: qsTr("Second")
-        }
+
+    Button{
+        id: btTheory
+        width:  100
+        x: thisWindow.width/4 - width/2
+        y: thisWindow.height/2 - height/2
+        text: qsTr("Theory")
     }
+
+    Button{
+        id: btTest
+        width: 100
+        x: thisWindow.width*3/4 - width/2
+        y: thisWindow.height/2 - height/2
+        text: qsTr("Test")
+    }
+
 }
