@@ -2,5 +2,12 @@
     <qresource prefix="/images"/>
     <qresource prefix="/icons">
         <file>icon_question_mark.png</file>
+        <file>icon_back.png</file>
+        <file>icon_back@2x.png</file>
+        <file>icon_back@3x.png</file>
+        <file>icon_back@4x.png</file>
+    </qresource>
+    <qresource prefix="/data">
+        <file>basic_english_grammar.db</file>
     </qresource>
 </RCC>

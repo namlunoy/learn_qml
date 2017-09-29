@@ -1,11 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Page1.qml</file>
-        <file>Page1Form.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>TitleText.qml</file>
         <file>TheoryPage.qml</file>
         <file>ListPage.qml</file>
+        <file>StartPage.qml</file>
+        <file>TestPage.qml</file>
     </qresource>
 </RCC>

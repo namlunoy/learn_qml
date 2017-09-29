@@ -1,21 +1,32 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.2
+import QtQuick.LocalStorage 2.0
 
 Item {
-    id: thisItem
+    property string title: "Lessons"
+    objectName: "ListPage"
+
     anchors.fill: parent
-    Rectangle{
-        color: "#A00000"
-        anchors.fill: parent
+
+    ListView{
+        id: listLesson
     }
 
-    Text {
-        id: title
-        text: qsTr("ListPage")
+
+    Component.onCompleted: {
+        loadDatabase()
+
     }
 
-    Button{
-        text: "click me"
-        onClicked: thisItem.visible = false
+    function loadDatabase(){
+        var db = LocalStorage.openDatabaseSync("data/basic_english_grammar.db","1.0","StorageDatabase","100000")
+        db.transaction(
+                    function(tx){
+                        var rs = tx.executeSql("select * from Lesson")
+                        console.log("count: ", rs.rows.length)
+                    }
+                    )
+
+
     }
 }

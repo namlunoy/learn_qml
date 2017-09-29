@@ -11,84 +11,58 @@ ApplicationWindow {
     height: 1136/2
     title: qsTr("Basic English Grammar")
 
-    ColumnLayout{
-        id: layTitle
-         x: thisWindow/2 - width/2
-         anchors.top: parent.top
-         anchors.topMargin: 22
-         anchors.horizontalCenter: parent.horizontalCenter
+    property string selectedPage: ""
 
-         TitleText {
-             id: txtTitle_Basic
-             text: "Basic"
-         }
+    header: ToolBar{
+        id: toolBar
+        visible: false
+        RowLayout {
+                   anchors.fill: parent
+                   ToolButton {
+                       contentItem: Image {
+                           id: name
+                           source: "icons/icon_back.png"
+                       }
+                       onClicked: {
+                           stackView.pop()
+                           if(stackView.currentItem.objectName == "StartPage"){
+                               toolBar.visible = false
+                           }
+                       }
 
-         TitleText {
-             id: txtTitle_English
-             text: "English"
-         }
+                   }
+                   Label {
+                       id: toolBarTitle
+                       text: "Title"
+                       elide: Label.ElideRight
+                       horizontalAlignment: Qt.AlignHCenter
+                       verticalAlignment: Qt.AlignVCenter
+                       Layout.fillWidth: true
+                   }
+                   ToolButton {
+                       text: qsTr("⋮")
+                       onClicked: menu.open()
+                   }
+               }
 
-         TitleText {
-             id: txtTitle_Grammar
-             text: "Grammar"
-         }
     }
 
-    Button{
-        id: btTheory
-        width:  100
-        x: thisWindow.width/4 - width/2
-        y: thisWindow.height/2 - height/2
-        text: qsTr("Theory")
-        font.family: "Courier"
-        onClicked: {
-            listPage.visible = true
+    StackView{
+        id: stackView
+        anchors.fill: parent
+        initialItem: StartPage{
+            btTheory.onClicked: {
+                selectedPage = "TheoryPage.qml"
+                toolBar.visible = true
+                stackView.push("ListPage.qml")
+            }
+
+            btTest.onClicked: {
+                selectedPage = "TestPage.qml"
+                toolBar.visible = true
+                stackView.push("ListPage.qml")
+            }
         }
     }
 
-    Button{
-        id: btTest
-        width: 100
-        x: thisWindow.width*3/4 - width/2
-        y: thisWindow.height/2 - height/2
-        text: qsTr("Test")
-        font.family: "Courier"
-    }
-
-    Button{
-        id: btQuestion
-        width: 50
-        height: 50
-        anchors.right: parent.right
-        anchors.rightMargin: 10
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 10
-        background: Image {
-            id: imgQuestion
-            source: "icons/icon_question_mark.png"
-        }
-        onClicked: dlgQuestion.open()
-    }
-
-    MessageDialog{
-        id: dlgQuestion
-        title: "About"
-        text: "This app was made for testing!\nBut it still does the job!"
-    }
-
-    Loader{
-        id: pageLoader
-    }
-
-    TheoryPage{
-        id: theoryPage
-        anchors.fill: parent
-        visible: false
-    }
-
-    ListPage{
-        id: listPage
-        anchors.fill: parent
-        visible: false
-    }
 }
