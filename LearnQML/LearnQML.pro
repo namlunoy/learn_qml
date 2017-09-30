@@ -3,7 +3,7 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    myfirstqobject.cpp
+    backend.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -31,4 +31,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    myfirstqobject.h
+    backend.h

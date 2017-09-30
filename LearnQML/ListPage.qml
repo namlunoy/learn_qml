@@ -19,7 +19,7 @@ Item {
     }
 
     function loadDatabase(){
-        var db = LocalStorage.openDatabaseSync("data/basic_english_grammar.db","1.0","StorageDatabase","100000")
+        var db = LocalStorage.openDatabaseSync("data/basic_english_grammar.db")
         db.transaction(
                     function(tx){
                         var rs = tx.executeSql("select * from Lesson")
