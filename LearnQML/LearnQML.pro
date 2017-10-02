@@ -1,4 +1,4 @@
-QT += qml quick
+QT += qml quick sql
 
 CONFIG += c++11
 
@@ -32,3 +32,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     backend.h
+
+ deployment.files += basic_english_grammar.db
+ deployment.path = /data
+ INSTALLS += deployment

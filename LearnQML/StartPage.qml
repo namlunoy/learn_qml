@@ -2,10 +2,12 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.2
 import QtQuick.Dialogs 1.2
+import CongHV.Backend 1.0
 
 Item {
     objectName: "StartPage"
 
+    property int count: 0
     property alias btTest: btTest
     property alias btTheory: btTheory
 
@@ -16,6 +18,14 @@ Item {
         anchors.topMargin: 22
         anchors.horizontalCenter: parent.horizontalCenter
 
+        Backend{
+            id: backend
+            onUserNameChanged: {
+                count++
+                txtTitle_English.text = userName
+            }
+        }
+
         TitleText {
             id: txtTitle_Basic
             text: "Basic"
@@ -23,7 +33,7 @@ Item {
 
         TitleText {
             id: txtTitle_English
-            text: "English"
+            text: ""
         }
 
         TitleText {
@@ -39,7 +49,9 @@ Item {
         y: thisWindow.height/2 - height/2
         text: qsTr("Theory")
         font.family: "Courier"
-        onClicked: {        }
+        onClicked: {
+            backend.userName = backend.userName + "_";
+        }
     }
 
     Button{
@@ -63,8 +75,14 @@ Item {
             id: imgQuestion
             source: "icons/icon_question_mark.png"
         }
-        onClicked: dlgQuestion.open()
+        onClicked: {
+            quit();
+            //dlgQuestion.open()
+
+        }
     }
+
+
 
     MessageDialog{
         id: dlgQuestion
