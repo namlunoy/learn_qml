@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.2
 import QtQuick.Dialogs 1.2
-import CongHV.Backend 1.0
+import CongLibs 1.0
 
 Item {
     objectName: "StartPage"
@@ -49,9 +49,7 @@ Item {
         y: thisWindow.height/2 - height/2
         text: qsTr("Theory")
         font.family: "Courier"
-        onClicked: {
-            backend.userName = backend.userName + "_";
-        }
+
     }
 
     Button{
@@ -61,6 +59,7 @@ Item {
         y: thisWindow.height/2 - height/2
         text: qsTr("Test")
         font.family: "Courier"
+
     }
 
     Button{
@@ -76,9 +75,7 @@ Item {
             source: "icons/icon_question_mark.png"
         }
         onClicked: {
-            quit();
-            //dlgQuestion.open()
-
+            dlgQuestion.open()
         }
     }
 

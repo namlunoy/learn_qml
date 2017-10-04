@@ -3,7 +3,8 @@ QT += qml quick sql
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    backend.cpp
+    backend.cpp \
+    lesson.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -31,7 +32,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    backend.h
+    backend.h \
+    lesson.h
 
  deployment.files += basic_english_grammar.db
  deployment.path = /data

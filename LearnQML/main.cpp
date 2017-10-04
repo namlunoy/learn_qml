@@ -9,7 +9,9 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     //Register class Backend as QML type
-    qmlRegisterType<Backend>("CongHV.Backend",1,0, "Backend");
+
+    qmlRegisterType<Backend>("CongLibs", 1, 0, "Backend");
+    qmlRegisterType<Lesson>("CongLibs", 1, 0, "Lesson");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));

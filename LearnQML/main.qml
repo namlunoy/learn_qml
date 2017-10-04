@@ -53,14 +53,14 @@ ApplicationWindow {
         initialItem: StartPage{
             btTheory.onClicked: {
                 selectedPage = "TheoryPage.qml"
-                //toolBar.visible = true
-                //stackView.push("ListPage.qml")
+                toolBar.visible = true
+                stackView.push("ListPage.qml")
             }
 
             btTest.onClicked: {
                 selectedPage = "TestPage.qml"
-                //toolBar.visible = true
-                //stackView.push("ListPage.qml")
+                toolBar.visible = true
+                stackView.push("ListPage.qml")
             }
         }
     }

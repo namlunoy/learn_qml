@@ -6,6 +6,10 @@
 #include <QSqlDatabase>
 #include <QtDebug>
 #include <QSqlQuery>
+#include <QList>
+#include <list>
+#include <vector>
+#include "lesson.h"
 
 class Backend : public QObject
 {
@@ -18,7 +22,9 @@ public:
 
     QString     userName();
     void        setUserName(const QString& userName);
-    void        readDatabase();
+    Backend*     getInstance();
+
+    Q_INVOKABLE QVariantList getAllLesson();
 
 signals:
     void        userNameChanged();
@@ -26,12 +32,18 @@ signals:
 public slots:
 
 private:
-    QString         m_userName;
-    QSqlDatabase    m_db;
+    static Backend* _instance;
+
+    QString                 m_userName;
+    QSqlDatabase            m_db;
+    //std::list<Lesson>       m_lesson;
+    //QList<Lesson>       m_lesson;
+    QVariantList            m_lesson;
 
     static const QString DB_DRIVER;
     static const QString DB_PATH;
     static const QString DB_NAME;
+
 };
 
 #endif // BACKEND_H
