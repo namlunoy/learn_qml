@@ -80,6 +80,30 @@ QVariantList Backend::getAllLesson()
     return getInstance()->m_lesson;
 }
 
+QString Backend::getContent(QString id)
+{
+    QString result;
+    QString sql = "select content from Lesson where id = "+id;
+    QSqlQuery query;
+    query.prepare(sql);
+    qDebug() << "SQL: " << sql;
+    if(query.exec() == false){
+        qDebug() << "Excure the query failed!";
+    }else{
+        if(query.first())
+            result = query.value("content").toString();
+    }
+    return result;
+}
+
+QVariantList Backend::getAllQuestion(QString lessonId)
+{
+    QVariantList questions;
+
+
+    return questions;
+}
+
 Backend* Backend::getInstance()
 {
     if(_instance == NULL)

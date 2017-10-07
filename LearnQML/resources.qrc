@@ -6,6 +6,7 @@
         <file>icon_back@2x.png</file>
         <file>icon_back@3x.png</file>
         <file>icon_back@4x.png</file>
+        <file>icon_test.png</file>
     </qresource>
     <qresource prefix="/data">
         <file>basic_english_grammar.db</file>

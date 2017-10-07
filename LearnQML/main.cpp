@@ -2,6 +2,8 @@
 #include <QQmlApplicationEngine>
 
 #include "backend.h"
+#include "question.h"
+#include "answer.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +14,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<Backend>("CongLibs", 1, 0, "Backend");
     qmlRegisterType<Lesson>("CongLibs", 1, 0, "Lesson");
+    qmlRegisterType<Question>("CongLibs", 1, 0, "Question");
+    qmlRegisterType<Answer>("CongLibs", 1, 0, "Answer");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));

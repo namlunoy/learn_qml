@@ -3,15 +3,20 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Dialogs 1.2
+import CongLibs 1.0
 
 ApplicationWindow {
-    id: thisWindow
+    id: myMainWindow
     visible: true
     width: 640/2
     height: 1136/2
     title: qsTr("Basic English Grammar")
 
     property string selectedPage: ""
+    property string selectedLessonId: ""
+    property string selectedLessonTitle: ""
+
+    Backend { id: backend }
 
     header: ToolBar{
         id: toolBar
@@ -62,6 +67,11 @@ ApplicationWindow {
                 toolBar.visible = true
                 stackView.push("ListPage.qml")
             }
+        }
+
+        onCurrentItemChanged: {
+            if(stackView.currentItem.title != undefined)
+            toolBarTitle.text = stackView.currentItem.title
         }
     }
 

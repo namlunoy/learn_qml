@@ -33,7 +33,7 @@ Item {
 
         TitleText {
             id: txtTitle_English
-            text: ""
+            text: "English"
         }
 
         TitleText {
@@ -45,8 +45,8 @@ Item {
     Button{
         id: btTheory
         width:  100
-        x: thisWindow.width/4 - width/2
-        y: thisWindow.height/2 - height/2
+        x: parent.width/4 - width/2
+        y: parent.height/2 - height/2
         text: qsTr("Theory")
         font.family: "Courier"
 
@@ -55,8 +55,8 @@ Item {
     Button{
         id: btTest
         width: 100
-        x: thisWindow.width*3/4 - width/2
-        y: thisWindow.height/2 - height/2
+        x: parent.width*3/4 - width/2
+        y: parent.height/2 - height/2
         text: qsTr("Test")
         font.family: "Courier"
 
@@ -78,7 +78,6 @@ Item {
             dlgQuestion.open()
         }
     }
-
 
 
     MessageDialog{

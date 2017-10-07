@@ -7,5 +7,6 @@
         <file>ListPage.qml</file>
         <file>StartPage.qml</file>
         <file>TestPage.qml</file>
+        <file>Style.qml</file>
     </qresource>
 </RCC>

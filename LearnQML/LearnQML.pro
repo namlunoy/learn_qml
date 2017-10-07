@@ -4,7 +4,9 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
     backend.cpp \
-    lesson.cpp
+    lesson.cpp \
+    question.cpp \
+    answer.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -33,8 +35,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     backend.h \
-    lesson.h
+    lesson.h \
+    question.h \
+    answer.h
 
  deployment.files += basic_english_grammar.db
  deployment.path = /data
  INSTALLS += deployment
+
+DISTFILES += \
+    qmldir

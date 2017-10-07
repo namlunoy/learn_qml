@@ -24,7 +24,9 @@ public:
     void        setUserName(const QString& userName);
     Backend*     getInstance();
 
-    Q_INVOKABLE QVariantList getAllLesson();
+    Q_INVOKABLE QVariantList    getAllLesson();
+    Q_INVOKABLE QString         getContent(QString id);
+    Q_INVOKABLE QVariantList    getAllQuestion(QString lessonId);
 
 signals:
     void        userNameChanged();
@@ -36,8 +38,6 @@ private:
 
     QString                 m_userName;
     QSqlDatabase            m_db;
-    //std::list<Lesson>       m_lesson;
-    //QList<Lesson>       m_lesson;
     QVariantList            m_lesson;
 
     static const QString DB_DRIVER;
