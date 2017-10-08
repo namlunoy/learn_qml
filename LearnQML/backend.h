@@ -6,10 +6,9 @@
 #include <QSqlDatabase>
 #include <QtDebug>
 #include <QSqlQuery>
-#include <QList>
-#include <list>
-#include <vector>
 #include "lesson.h"
+#include "question.h"
+#include "answer.h"
 
 class Backend : public QObject
 {
@@ -26,7 +25,9 @@ public:
 
     Q_INVOKABLE QVariantList    getAllLesson();
     Q_INVOKABLE QString         getContent(QString id);
-    Q_INVOKABLE QVariantList    getAllQuestion(QString lessonId);
+    Q_INVOKABLE QVariantList    getAllQuestions(QString lessonId);
+    Q_INVOKABLE QVariantList    getAllAnswers(QString questionId);
+
 
 signals:
     void        userNameChanged();

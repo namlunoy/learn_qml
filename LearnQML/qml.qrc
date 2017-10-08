@@ -8,5 +8,6 @@
         <file>StartPage.qml</file>
         <file>TestPage.qml</file>
         <file>Style.qml</file>
+        <file>AnswerButton.qml</file>
     </qresource>
 </RCC>

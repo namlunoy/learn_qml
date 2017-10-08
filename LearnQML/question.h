@@ -7,8 +7,10 @@
 class Question : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString content READ content WRITE setContent  )
-    Q_PROPERTY(QString id READ id WRITE setId  )
+    Q_PROPERTY(QString content READ content WRITE setContent)
+    Q_PROPERTY(QString id READ id WRITE setId)
+    Q_PROPERTY(QString explain READ explain WRITE setExplain)
+
    // Q_PROPERTY(QVariantList answers READ answers WRITE setAnswers  )
 
 public:
@@ -21,8 +23,8 @@ public:
     QString id() const;
     void setId(const QString &id);
 
-    //QVariantList answers() const;
-    //void setAnswers(const QVariantList &answers);
+    QString explain() const;
+    void setExplain(const QString &explain);
 
 signals:
 
@@ -31,7 +33,7 @@ public slots:
 private:
     QString         m_id;
     QString         m_content;
-    //QVariantList    m_answers;
+    QString         m_explain;
 };
 
 #endif // QUESTION_H

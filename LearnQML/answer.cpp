@@ -24,3 +24,23 @@ void Answer::setIsCorrect(bool isCorrect)
 {
     m_isCorrect = isCorrect;
 }
+
+QString Answer::id() const
+{
+    return m_id;
+}
+
+void Answer::setId(const QString &id)
+{
+    m_id = id;
+}
+
+QString Answer::hint() const
+{
+    return m_hint;
+}
+
+void Answer::setHint(const QString &hint)
+{
+    m_hint = hint;
+}

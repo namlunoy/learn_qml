@@ -25,14 +25,12 @@ void Question::setId(const QString &id)
     m_id = id;
 }
 
+QString Question::explain() const
+{
+    return m_explain;
+}
 
-
-//QVariantList Question::answers() const
-//{
-//    return m_answers;
-//}
-
-//void Question::setAnswers(const QVariantList &answers)
-//{
-//    m_answers = answers;
-//}
+void Question::setExplain(const QString &explain)
+{
+    m_explain = explain;
+}

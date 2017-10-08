@@ -88,7 +88,7 @@ QString Backend::getContent(QString id)
     query.prepare(sql);
     qDebug() << "SQL: " << sql;
     if(query.exec() == false){
-        qDebug() << "Excure the query failed!";
+        qDebug() << "Execute the query failed!";
     }else{
         if(query.first())
             result = query.value("content").toString();
@@ -96,12 +96,48 @@ QString Backend::getContent(QString id)
     return result;
 }
 
-QVariantList Backend::getAllQuestion(QString lessonId)
+QVariantList Backend::getAllQuestions(QString lessonId)
 {
     QVariantList questions;
-
+    QString sql = "select * from Question where Question.lesson_id = " + lessonId;
+    QSqlQuery query;
+    query.prepare(sql);
+    if(query.exec() == false){
+        qDebug() << "Execute failed: " + sql;
+    }else{
+        while(query.next()){
+            Question *quest = new Question;
+            quest->setId(query.value("id").toString());
+            quest->setContent(query.value("text").toString());
+            quest->setExplain(query.value("explan").toString());
+            questions.push_back(qVariantFromValue(quest));
+            //delete quest;
+        }
+    }
 
     return questions;
+}
+
+QVariantList Backend::getAllAnswers(QString questionId)
+{
+    QVariantList answers;
+    QString sql = "select * from Answer where Answer.question_id = '" + questionId + "'";
+    QSqlQuery query;
+    query.prepare(sql);
+    if(query.exec() == false)
+        qDebug() << "Execute failed! " << sql;
+    else{
+        while(query.next()){
+            Answer *answer = new Answer;
+            answer->setContent(query.value("text").toString());
+            answer->setHint(query.value("hint").toString());
+            answer->setId(query.value("id").toString());
+            answer->setIsCorrect(query.value("is_correct").toBool());
+            answers.push_back(qVariantFromValue(answer));
+        }
+    }
+
+    return answers;
 }
 
 Backend* Backend::getInstance()
